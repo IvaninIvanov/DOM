@@ -72,3 +72,91 @@ function findElementByQuery(query) {
   var elm = document.querySelectorAll(query);
   return elm;
 }
+
+
+
+function reverseList(sel) {
+  var toRev;
+  // need to find out whether it is a class or id selector
+  if (sel.charAt(0) === "#") {
+    sel = sel.substr(1);
+    toRev = document.getElementById(sel)
+  }
+  else if (toRev.charAt(0) === ".") {
+    sel = sel.substr(1);
+    toRev = document.getElementsByClassName(sel)
+  }
+  else {
+    alert("Invalid selector format. Use # for id selector and . for class.")
+  }
+  // get lenght of list
+  var i = toRev.childNodes.length;
+  // reverse
+  while (i--)
+  toRev.appendChild(toRev.childNodes[i]);
+
+  return toRev;
+}
+
+
+
+function mover(selFrom, selTo) {
+  var objFrom, objTo;
+  // selector template for target
+  if (selFrom.charAt(0) === "#") {
+    selFrom = selFrom.substr(1);
+    objFrom = document.getElementById(selFrom)
+  }
+  else if (toRev.charAt(0) === ".") {
+    selFrom = selFrom.substr(1);
+    objFrom = document.getElementsByClassName(selFrom)
+  }
+  else {
+    alert("Invalid selector format. Use # for id selector and . for class.")
+  }
+
+  // selector template for destination
+  if (selTo.charAt(0) === "#") {
+    selTo = selTo.substr(1);
+    objTo = document.getElementById(selTo)
+  }
+  else if (toRev.charAt(0) === ".") {
+    selTo = selTo.substr(1);
+    objTo = document.getElementsByClassName(selTo)
+  }
+  else {
+    alert("Invalid selector format. Use # for id selector and . for class.")
+  }
+
+  objTo.appendChild(objFrom);
+}
+
+
+function filler(selTarget, selInput) {
+  for (var i = 0; i < selInput.length; i++) {
+    var elem = document.createElement("li");
+    var t = document.createTextNode(selInput[i]);
+    elem.appendChild(t);
+    selTarget.appendChild(elem);
+  }
+}
+
+
+function dupe(sel) {
+  // selector template
+  var obj, objCopy;
+  if (sel.charAt(0) === "#") {
+    sel = sel.substr(1);
+    obj = document.getElementById(sel)
+  }
+  else if (toRev.charAt(0) === ".") {
+    sel = sel.substr(1);
+    obj = document.getElementsByClassName(sel)
+  }
+  else {
+    alert("Invalid selector format. Use # for id selector and . for class.")
+  }
+
+  objCopy = obj.cloneNode(true);
+  obj.parentElement.appendChild(objCopy);
+}
